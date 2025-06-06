@@ -12,7 +12,7 @@ from langchain.memory import ConversationBufferMemory
 from pprint import pprint
 
 
-def initialize_agent(model, tools):
+def get_executor(model, tools) -> AgentExecutor:
 
     prompt = hub.pull("hwchase17/react-chat")
 
@@ -35,3 +35,5 @@ def initialize_agent(model, tools):
         max_iterations=5,
         handle_parsing_errors=True
     )
+
+    return executor
