@@ -3,6 +3,8 @@ import os
 from IPython.display import display, clear_output, Markdown
 from dotenv import load_dotenv
 from datetime import datetime
+
+from langchain_core.prompts import SystemMessagePromptTemplate
 from langchain_ollama import ChatOllama
 from langchain_deepseek import ChatDeepSeek
 from langchain import hub
@@ -12,7 +14,7 @@ from langchain.memory import ConversationBufferMemory
 from pprint import pprint
 
 
-def initialize_agent(model, tools):
+def get_executor(model, tools) -> AgentExecutor:
 
     prompt = hub.pull("hwchase17/react-chat")
 
@@ -33,5 +35,8 @@ def initialize_agent(model, tools):
         memory=memory,
         verbose=True,
         max_iterations=5,
+        early_stopping_method="generate",
         handle_parsing_errors=True
     )
+
+    return executor
