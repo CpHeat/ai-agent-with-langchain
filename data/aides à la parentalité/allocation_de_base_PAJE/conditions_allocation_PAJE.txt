@@ -1,0 +1,42 @@
+Vous avez droit à l'allocation de base si vous remplissez les 2 conditions suivantes :
+
+Vous avez un enfant à charge de moins de 3 ans
+Vos revenus sont inférieurs à un certain plafond.
+
+Vos ressources ne doivent pas dépasser un montant déterminé en fonction de votre situation familiale.
+C'est le revenu net catégoriel de 2023 qui est pris en compte pour 2025.
+
+
+
+Couple :
+
+ Tableau - Plafonds de ressources suivant la situation de l'allocataire
+
+Couple avec 2 revenus :
+
+	1 enfant : 48 186 €
+	2 enfants : 55 478 €
+	3 enfants : 64 229 €
+	Par enfant supplémentaire : 8 751 €
+
+Couple avec un seul revenu :
+
+	1 enfant : 36 461 €
+	2 enfants : 43 753 €
+	3 enfants : 52 504 €
+	Par enfant supplémentaire : 8 751 €
+
+Il y a 2 revenus si chacun perçoit un montant annuel de 5 983 € ou plus (en 2023) provenant d'une activité professionnelle ou d'indemnités journalières d'accident de travail ou de maladie professionnelle.
+
+
+
+Parent isolé :
+
+ Tableau - Plafonds de ressources suivant la situation de l'allocataire
+
+Parent isolé :
+
+	1 enfant : 48 186 €
+	2 enfants : 55 478 €
+	3 enfants : 64 229 €
+	Par enfant supplémentaire : 8 751 €
