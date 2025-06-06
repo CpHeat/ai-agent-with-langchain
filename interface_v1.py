@@ -1,26 +1,35 @@
 import streamlit as st
+from agent_rag import executor
 
-# 🔧 Fonction simulée (à remplacer par ton futur chatbot LLM)
 def repondre_utilisateur(question):
     if not question.strip():
         return "Merci de poser une question claire sur une aide gouvernementale."
     try:
-        return "Ceci est une réponse simulée. (La logique du chatbot sera ajoutée plus tard.)"
+        chat_history = []
+        messages = st.session_state.messages
+
+        for i in range(0, len(messages) - 1, 2):
+            if messages[i][0] == "user" and messages[i+1][0] == "assistant":
+                chat_history.append((messages[i][1], messages[i+1][1]))
+
+        response = executor.invoke({
+            "input": question,
+            "chat_history": chat_history
+        })
+
+        return response.get("output", "❌ Réponse invalide reçue du modèle.")
     except Exception as e:
         return f"❌ Une erreur est survenue : {e}"
 
-# 🎨 Configuration de la page
 st.set_page_config(
-    page_title="Chatbot Aides Gouvernementales", 
+    page_title="Chatbot Aides Gouvernementales",
     page_icon="🇫🇷",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# 🎨 CSS personnalisé pour un meilleur style
 st.markdown("""
 <style>
-    /* Amélioration du header */
     .main-header {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         padding: 2rem 0;
@@ -30,20 +39,16 @@ st.markdown("""
         color: white;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    
     .main-header h1 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
         font-weight: 700;
     }
-    
     .main-header p {
         font-size: 1.1rem;
         opacity: 0.9;
         margin: 0;
     }
-    
-    /* Amélioration des exemples */
     .examples-container {
         background: #f8f9fa;
         padding: 1.5rem;
@@ -51,7 +56,6 @@ st.markdown("""
         border-left: 4px solid #667eea;
         color: black;
     }
-    
     .example-question {
         background: white;
         padding: 0.8rem 1rem;
@@ -61,8 +65,6 @@ st.markdown("""
         font-style: italic;
         color: #555;
     }
-    
-    /* Zone de chat améliorée */
     .chat-container {
         background: white;
         border-radius: 15px;
@@ -70,8 +72,6 @@ st.markdown("""
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         margin-bottom: 2rem;
     }
-    
-    /* Amélioration du footer */
     .footer-info {
         background: #f1f3f4;
         padding: 1rem;
@@ -81,8 +81,6 @@ st.markdown("""
         margin-top: 2rem;
         font-size: 0.9rem;
     }
-    
-    /* Bouton de réinitialisation stylisé - positionné en bas */
     .reset-button-container {
         display: flex;
         justify-content: center;
@@ -90,8 +88,6 @@ st.markdown("""
         padding-top: 1rem;
         border-top: 1px solid #e0e0e0;
     }
-    
-    /* Responsive design */
     @media (max-width: 768px) {
         .main-header h1 {
             font-size: 2rem;
@@ -103,7 +99,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 🧾 Header principal amélioré
 st.markdown("""
 <div class="main-header">
     <h1>Chatbot des Aides Gouvernementales</h1>
@@ -111,7 +106,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 📝 Section d'exemples améliorée
 st.markdown("""
 <div class="examples-container">
     <h3>💡 Exemple de prompt</h3>
@@ -123,11 +117,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 💬 Initialisation de l'historique
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# 🧾 Affichage de l'historique des messages dans un conteneur stylisé
 if st.session_state.messages:
     st.markdown('<div class="chat-container">', unsafe_allow_html=True)
     for role, content in st.session_state.messages:
@@ -135,7 +127,6 @@ if st.session_state.messages:
             st.markdown(content)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# 📋 Informations supplémentaires
 st.markdown("""
 <div class="footer-info">
     <strong>ℹ️ Informations importantes :</strong><br>
@@ -145,23 +136,18 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 🎤 Entrée utilisateur
 if prompt := st.chat_input("💬 Posez votre question sur les aides gouvernementales..."):
-    # Affiche et enregistre la question de l'utilisateur
     st.session_state.messages.append(("user", prompt))
     with st.chat_message("user", avatar="👤"):
         st.markdown(prompt)
 
-    # Génère et affiche la réponse
     with st.chat_message("assistant", avatar="🤖"):
         with st.spinner("🔍 Recherche des informations..."):
             response = repondre_utilisateur(prompt)
             st.markdown(response)
-    
     st.session_state.messages.append(("assistant", response))
     st.rerun()
 
-# 🗑️ Bouton de nouvelle conversation centré tout en bas de page
 st.markdown('<div class="reset-button-container">', unsafe_allow_html=True)
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
@@ -170,7 +156,6 @@ with col2:
         st.rerun()
 st.markdown('</div>', unsafe_allow_html=True)
 
-# 🔗 Liens utiles dans une sidebar (optionnel)
 with st.sidebar:
     st.markdown("### 🔗 Liens utiles")
     st.markdown("""
@@ -179,9 +164,9 @@ with st.sidebar:
     - [Pôle Emploi](https://www.pole-emploi.fr)
     - [Mes Aides](https://mes-aides.gouv.fr)
     """)
-    
+
     st.markdown("### 📊 Statistiques")
     st.metric("Messages échangés", len(st.session_state.messages))
-    
+
     st.markdown("### 🛠️ À propos")
     st.info("Version 1.0 - Interface améliorée pour une meilleure expérience utilisateur")
