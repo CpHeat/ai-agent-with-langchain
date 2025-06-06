@@ -4,10 +4,10 @@ langchain-openai
 langchain-deepseek
 langchain-ollama
 langchain-chroma
-chromadblangchain
 langchain-community
 langchain-openai
 langchain-deepseek
 langchain-ollama
 chromadb
 duckduckgo-search
+streamlit

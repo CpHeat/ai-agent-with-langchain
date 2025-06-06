@@ -1,0 +1,47 @@
+La situation diffère selon que vous êtes en couple ou parent isolé :
+
+Couple :
+
+	- Couple avec 1 revenu :
+
+		- 1 enfant :
+			- revenus < 30518€ : 196.59€
+			- 30518€ < revenus < 36461€ : 98.30€
+
+		- 2 enfants :
+			- revenus < 36621€ : 196.59€
+			- 36621€ < revenus < 43946€ : 98.30€
+
+		- 3 enfants :
+			- revenus < 43946€ : 196.59€
+			- 43946€ < revenus < 52504€ : 98.30€
+
+	- Couple avec 2 revenu :
+
+		- 1 enfant :
+			- revenus < 40330€ : 196.59€
+			- 40330€ < revenus < 48186€ : 98.30€
+
+		- 2 enfants :
+			- revenus < 46433€ : 196.59€
+			- 46433€ < revenus < 55478€ : 98.30€
+
+		- 3 enfants :
+			- revenus < 53758€ : 196.59€
+			- 53758€ < revenus < 64229€ : 98.30€
+
+
+
+Parent isolé :
+
+	- 1 enfant :
+		- revenus < 40330€ : 196.59€
+		- 40330€ < revenus < 48186€ : 98.30€
+
+	- 2 enfants :
+		- revenus < 46433€ : 196.59€
+		- 46433€ < revenus < 55478€ : 98.30€
+
+	- 3 enfants :
+		- revenus < 53758€ : 196.59€
+		- 53758€ < revenus < 64229€ : 98.30€

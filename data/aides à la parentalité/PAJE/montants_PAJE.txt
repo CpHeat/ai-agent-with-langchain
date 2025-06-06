@@ -1,0 +1,11 @@
+Le montant n'est pas le même si vous avez des jumeaux, des triplés, etc.
+
+Cas général :
+
+	Le montant net de la prime à la naissance s'élève à 1 084,44 €.
+
+Jumeaux, triplés, ... :
+
+	En cas de naissances multiples attendues, il est versé autant de primes que d'enfants à naître,
+	sur la base d'une attestation médicale précisant le nombre d'enfants à naître.
+	Cette prime s'élève à 1 084,44 €.

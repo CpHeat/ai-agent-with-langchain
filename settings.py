@@ -1,6 +1,4 @@
-"""
-data vectorizing parameters
-"""
+# data vectorizing parameters
 vectorizing_params = {
     'chunk_size': 1000,
     'chunk_overlap': 0
