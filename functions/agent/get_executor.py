@@ -3,6 +3,8 @@ import os
 from IPython.display import display, clear_output, Markdown
 from dotenv import load_dotenv
 from datetime import datetime
+
+from langchain_core.prompts import SystemMessagePromptTemplate
 from langchain_ollama import ChatOllama
 from langchain_deepseek import ChatDeepSeek
 from langchain import hub
@@ -33,6 +35,7 @@ def get_executor(model, tools) -> AgentExecutor:
         memory=memory,
         verbose=True,
         max_iterations=5,
+        early_stopping_method="generate",
         handle_parsing_errors=True
     )
 

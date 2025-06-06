@@ -1,5 +1,4 @@
 import streamlit as st
-from langchain_ollama import ChatOllama
 
 from functions.agent.get_executor import get_executor
 

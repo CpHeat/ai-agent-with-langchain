@@ -1,3 +1,5 @@
+import os
+
 from dotenv import load_dotenv
 from langchain_deepseek import ChatDeepSeek
 from langchain_ollama import ChatOllama, OllamaEmbeddings

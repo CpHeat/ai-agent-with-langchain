@@ -5,7 +5,11 @@ from langchain_core.tools import Tool
 
 def get_rag_tool(model, retriever) -> Tool:
 
-    qa_chain = ConversationalRetrievalChain.from_llm(llm=model, retriever=retriever)
+    qa_chain = ConversationalRetrievalChain.from_llm(
+        llm=model,
+        retriever=retriever,
+        return_source_documents=True
+    )
 
     chat_history = [
         SystemMessage(content="Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant les documents qui lui sont fournis.")
@@ -23,19 +27,23 @@ def get_rag_tool(model, retriever) -> Tool:
             + "\n\nDonne une réponse basée uniquement sur les documents qui te sont fournis."
         )
 
-        chat_history.append(HumanMessage(content=query))
+        #chat_history.append(HumanMessage(content=query))
 
         result = qa_chain.invoke({"question": input_message, "chat_history": chat_history})
         chat_history.append((query, result["answer"]))
 
-        print("result:", result)
+        print("chat_history:", chat_history)
+        sources = result["source_documents"]
+
+        for doc in sources:
+            print(doc.metadata["source"])
         return result["answer"]
 
     rag_tool = Tool(
         name="consult_droit",
         func=ask_rag,
-        description="Répond à des questions sur les droits sociaux (APL, RSA, etc.). Fournit des réponses fiables extraites de documents organisés par thème."
+        description="Répond à des questions sur les droits sociaux. Fournit des réponses fiables extraites de documents organisés par thème.",
+        return_direct=True
     )
 
     return rag_tool
-
