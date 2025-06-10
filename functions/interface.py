@@ -1,6 +1,7 @@
 import streamlit as st
 
 from functions.agent.get_executor import get_executor
+from settings import params
 
 
 def interface(model, tools):
@@ -29,7 +30,25 @@ def interface(model, tools):
             with st.spinner("Réflexion en cours..."):
                 response = st.session_state.agent_executor.invoke({"input": prompt})
                 st.markdown(response["output"])
+
                 st.session_state.messages.append({"role": "assistant", "content": response["output"]})
+
+                if params['debug']:
+                    debug_message = "### Debug\n"
+                    debug_message += f"Agent query to the tool: {params['debug_query']}\n\n"
+
+                    if len(params['debug_log']) == 0:
+                        debug_message += "No documents were used for this answer\n"
+                    else:
+                        debug_message += f"{len(params['debug_log'])} document(s) were used for this answer:\n\n"
+                        for debug_dict in params['debug_log']:
+                            debug_message += (
+                                f"- Source: {debug_dict['document_source']}\n"
+                                f"- Themes: {debug_dict['document_large_theme']} \\ {debug_dict['document_theme']}\n"
+                                f"- Content: {debug_dict['document_content']}\n\n"
+                            )
+
+                st.session_state.messages.append({"role": "assistant", "content": debug_message})
         st.rerun()
 
     # Bouton pour réinitialiser la conversation
