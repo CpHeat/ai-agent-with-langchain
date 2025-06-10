@@ -1,11 +1,15 @@
+# General parameters
+params = {
+    'debug': True,
+    'debug_log': []
+}
 # data vectorizing parameters
 vectorizing_params = {
     'chunk_size': 1000,
     'chunk_overlap': 0
 }
-
+# Retriever parameters
 """
-Retriever parameters
 search_type can be similarity, mmr or similarity_threshold
 if search_type == similarity, search_kwargs must be like {
     'k': 10 (how many documents tu return)

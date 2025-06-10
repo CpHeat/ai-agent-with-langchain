@@ -2,6 +2,8 @@ from langchain.chains.conversational_retrieval.base import ConversationalRetriev
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.tools import Tool
 
+from settings import params
+
 
 def get_rag_tool(model, retriever) -> Tool:
 
@@ -37,6 +39,8 @@ def get_rag_tool(model, retriever) -> Tool:
 
         for doc in sources:
             print(doc.metadata["source"])
+            print("doc :", doc)
+            #params['debug_log'].append("Used document :", doc.metadata["source"])
         return result["answer"]
 
     rag_tool = Tool(
