@@ -1,4 +1,7 @@
 import os
+import subprocess
+import sys
+from turtle import st
 
 from dotenv import load_dotenv
 from langchain_deepseek import ChatDeepSeek
@@ -9,6 +12,10 @@ from settings import retriever_params
 from functions.data.get_vectorstore import get_vectorstore
 from functions.tools.get_rag_tool import get_rag_tool
 
+
+def app():
+    st.title("Ma super app Streamlit")
+    st.write("Bienvenue !")
 
 if __name__ == "__main__":
     load_dotenv(override=True)
@@ -35,23 +42,3 @@ if __name__ == "__main__":
     ]
 
     interface(model, tools)
-
-
-
-
-    # executor = get_executor(model, tools)
-
-
-
-
-    # while True:
-    #     user_input = input("Vous : ")
-    #     clear_output(wait=True)                         # Efface l'affichage précédent
-    #     display(Markdown(f"**Vous :** {user_input}"))   # Affiche la requête de l'utilisateur
-    #
-    #     if user_input.lower() in ["stop", "exit", "quit"]:
-    #         print("Fin de la conversation.")
-    #         break
-    #
-    #     response = executor.invoke({"input": user_input})
-    #     display(Markdown(response["output"]))
