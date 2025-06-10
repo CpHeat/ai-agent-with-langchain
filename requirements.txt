@@ -1,3 +1,4 @@
+IPython
 langchain
 langchain-community
 langchain-openai

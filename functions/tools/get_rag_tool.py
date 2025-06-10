@@ -14,7 +14,7 @@ def get_rag_tool(model, retriever) -> Tool:
     )
 
     chat_history = [
-        SystemMessage(content="Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant les documents qui lui sont fournis.")
+        SystemMessage(content="Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant uniquement les documents qui te sont fournis.")
     ]
 
     def ask_rag(query: str) -> str:
@@ -34,13 +34,18 @@ def get_rag_tool(model, retriever) -> Tool:
         result = qa_chain.invoke({"question": input_message, "chat_history": chat_history})
         chat_history.append((query, result["answer"]))
 
-        print("chat_history:", chat_history)
+        # print("chat_history:", chat_history)
         sources = result["source_documents"]
 
         for doc in sources:
-            print(doc.metadata["source"])
-            print("doc :", doc)
-            #params['debug_log'].append("Used document :", doc.metadata["source"])
+            params['debug_query'] = query
+            params['debug_log'].append({
+                "document_source": doc.metadata["source"],
+                "document_large_theme": doc.metadata["large_theme"],
+                "document_theme": doc.metadata["theme"],
+                "document_content": doc.page_content
+            })
+
         return result["answer"]
 
     rag_tool = Tool(

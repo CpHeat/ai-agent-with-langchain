@@ -1,7 +1,27 @@
+import os
+
+from dotenv import load_dotenv
+from langchain_deepseek import ChatDeepSeek
+from langchain_ollama import ChatOllama, OllamaEmbeddings
+
+
+load_dotenv(override=True)
+
+
+# model = ChatDeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
+# rag_model = ChatOllama(model="llama3", temperature=0)
+tool_model = ChatDeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
+agent_model = ChatDeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
+# Modèle spécialisé pour convertir du texte en vecteurs (https://ollama.com/library/nomic-embed-text).
+# Il existe d'autres modèles d'embeddings (comme "all-MiniLM-L6-v2", "text-embedding-ada-002", etc.)
+# avec des performances et dimensions variées selon les cas d’usage (recherche sémantique, classification, etc.).
+embedder = OllamaEmbeddings(model="nomic-embed-text")
+
 # General parameters
 params = {
     'debug': True,
-    'debug_log': []
+    'debug_log': [],
+    'debug_query': ''
 }
 # data vectorizing parameters
 vectorizing_params = {
