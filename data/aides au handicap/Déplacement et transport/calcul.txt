@@ -1,0 +1,8 @@
+Calcul d'éligibilité :
+    Vous êtes titulaires de la carte mobilité inclusion, ou la carte d’invalidité, avec mention « besoin d’accompagnement » 
+    : vous pouvez donc vous faire accompagner gratuitement lors de vos déplacements vous êtes éligible au déplacements et transport
+    Quand il voyage avec vous, votre accompagnant n’a pas besoin de titre de transport. 
+
+Calcul du montant de l'aide :
+    Une personne déclarant un revenu annuel <= 27.007,02 euros aura accès à une prise en charge de 100%.
+    Au-delà de ce montant, la prise en charge tombe à 80%
