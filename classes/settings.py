@@ -15,7 +15,8 @@ class Settings:
     params = {
         'debug': True,
         'debug_log': [],
-        'debug_query': ''
+        'debug_query': None,
+        'debug_used_tool': None
     }
     # data vectorizing parameters
     vectorizing_params = {
@@ -48,12 +49,12 @@ class Settings:
     retriever_params = {
         'search_type': 'similarity',
         'search_kwargs': {
-            "k": 10
+            "k": 5
         }
     }
 
     # model = ChatDeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
-    # rag_model = ChatOllama(model="llama3", temperature=0)
+    # rag_model = ChatOllama(model="llama3.2", temperature=0)
     rag_model = ChatDeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
     agent_model = ChatDeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
     # Modèle spécialisé pour convertir du texte en vecteurs (https://ollama.com/library/nomic-embed-text).

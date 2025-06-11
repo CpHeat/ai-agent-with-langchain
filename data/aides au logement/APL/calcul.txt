@@ -5,7 +5,7 @@ Calcul d’éligibilité :
     - vous ne dépassez pas le plafond de ressources applicable à votre situation.
 
 Calcul du montant de l’aide :
-    Revenu annuel du foyer = 19 500 €
+    Revenu annuel du foyer = 19500 €
     Loyer charges comprises = 530 €/mois
     Zone = 2
     Nombre de personnes dans le foyer = 2 adultes + 1 enfant

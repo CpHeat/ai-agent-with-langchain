@@ -35,6 +35,8 @@ class RagTool:
 
         def ask_rag(query: str) -> str:
 
+            settings.params['debug_used_tool'] = f"Tool used: {self._name}"
+
             relevant_chunks = retriever.invoke(query)
             input_message = (
                     "Voici des documents qui vont t'aider à répondre à la question : "
