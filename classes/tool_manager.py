@@ -1,6 +1,6 @@
 from win32com.servers.PythonTools import Tools
 
-from classes.rag_tool import RagTool
+from classes.eligibility_tool import EligibilityTool
 from classes.settings import Settings
 
 
@@ -21,7 +21,7 @@ class ToolManager:
 
     def _create_tools(self, settings, retriever):
         tools = []
-        rag_tool = RagTool().initialize(settings, retriever)
+        rag_tool = EligibilityTool().initialize(settings, retriever)
         tools.append(rag_tool)
         return tools
 

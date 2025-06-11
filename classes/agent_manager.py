@@ -40,7 +40,6 @@ class AgentManager:
             memory=memory,
             verbose=False,
             max_iterations=5,
-            early_stopping_method="generate",
             handle_parsing_errors=True
         )
 

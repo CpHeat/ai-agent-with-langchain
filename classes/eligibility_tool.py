@@ -5,7 +5,7 @@ from langchain_core.tools import Tool
 from classes.settings import Settings
 
 
-class RagTool:
+class EligibilityTool:
 
     _instance = None
     _rag_tool = None
@@ -36,13 +36,15 @@ class RagTool:
         ]
 
         def ask_rag(query: str) -> str:
-            relevant_chunks = retriever.invoke(query)
+            filtered_chunks = retriever.invoke(query, filter={"theme": {"$eq": "conditions"}})
+
+            # relevant_chunks = retriever.invoke(query)
 
             input_message = (
                     "Voici des documents qui vont t'aider à répondre à la question : "
                     + query
                     + "\n\nDocuments pertinents : \n"
-                    + "\n\n".join([chunk.page_content for chunk in relevant_chunks])
+                    + "\n\n".join([chunk.page_content for chunk in filtered_chunks])
                     + "\n\nDonne une réponse basée uniquement sur les documents qui te sont fournis."
             )
 
@@ -65,14 +67,14 @@ class RagTool:
 
             return result["answer"]
 
-        rag_tool = Tool(
-            name="consult_droit",
+        eligibility_tool = Tool(
+            name="Eligibility tool",
             func=ask_rag,
-            description="Répond à des questions sur les droits sociaux. Fournit des réponses fiables extraites de documents organisés par thème.",
+            description="Gives you answers about eligibility to French government aids and social rights. Gives reliable answers based on documents.",
             return_direct=True
         )
 
-        return rag_tool
+        return eligibility_tool
 
     @property
     def rag_tool(self):
