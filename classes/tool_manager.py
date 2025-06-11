@@ -14,19 +14,19 @@ class ToolManager:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def initialize(self, settings:Settings, retriever):
+    def initialize(self, settings:Settings, vectorstore_manager):
         if self._tools is None:
-            self._tools = self._create_tools(settings, retriever)
+            self._tools = self._create_tools(settings, vectorstore_manager)
         return self
 
-    def _create_tools(self, settings, retriever):
+    def _create_tools(self, settings, vectorstore_manager):
         tools = []
-        rag_tool = EligibilityTool().initialize(settings, retriever)
-        tools.append(rag_tool)
+        eligibility_tool = EligibilityTool().initialize(settings, vectorstore_manager)
+        tools.append(eligibility_tool)
         return tools
 
     @property
     def tools(self):
         if self._tools is None:
-            raise RuntimeError("Agent not initialized. Call initialize() first.")
+            raise RuntimeError("ToolManager not initialized. Call initialize() first.")
         return self._tools

@@ -11,7 +11,6 @@ class VectorstoreManager:
 
     _instance = None
     _vectorstore = None
-    _retriever = None
 
     def __new__(cls):
         if cls._instance is None:
@@ -21,7 +20,6 @@ class VectorstoreManager:
     def initialize(self, settings:Settings):
         if self._vectorstore is None:
             self._vectorstore = self._create_vectorstore(settings)
-            self._retriever = self.get_retriever(settings)
         return self
 
     def _create_vectorstore(self, settings):
@@ -53,6 +51,8 @@ class VectorstoreManager:
                         large_theme = parts[0]
                         theme = parts[1]
                         subtheme = parts[2].replace(".txt", "")
+
+                        print("subtheme", subtheme)
 
                         # Chunk splitting
                         chunks = text_splitter.split_text(full_text)
@@ -89,19 +89,20 @@ class VectorstoreManager:
     @property
     def vectorstore(self):
         if self._vectorstore is None:
-            raise RuntimeError("Vectorstore not initialized. Call initialize() first.")
+            raise RuntimeError("VectorstoreManager not initialized. Call initialize() first.")
         return self._vectorstore
 
-    @property
-    def retriever(self):
-        if self._retriever is None:
-            raise RuntimeError("Vectorstore not initialized. Call initialize() first.")
-        return self._retriever
+    def get_retriever(self, settings, retriever_filter:dict=None):
 
-    def get_retriever(self, settings):
+        print("retriever_filter", retriever_filter)
+
+        search_kwargs = settings.retriever_params['search_kwargs']
+        if retriever_filter:
+            search_kwargs['filter'] = retriever_filter
+
         if self._vectorstore is None:
             raise RuntimeError("Retriever not initialized. Call initialize() first.")
         return self._vectorstore.as_retriever(
             search_type=settings.retriever_params['search_type'],
-            search_kwargs=settings.retriever_params['search_kwargs']
+            search_kwargs=search_kwargs
         )
