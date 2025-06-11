@@ -1,0 +1,11 @@
+Calcul d’éligibilité :
+    L’ALS est destinée aux personnes :
+    - non éligibles à l’APL ou ALF,
+    - logeant dans un foyer, résidence sociale, ou meublé déclaré.
+
+Calcul du montant de l’aide :
+    Le montant est calculé selon :
+    - les ressources déclarées (année N-2),
+    - le montant du loyer charges comprises (plafonné),
+    - et la composition du foyer.
+    Par exemple, un étudiant seul avec un revenu annuel de 8 000 € peut toucher jusqu’à 200 €/mois.

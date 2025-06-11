@@ -1,0 +1,12 @@
+Calcul d’éligibilité :
+    Vous êtes éligible à l’ALF si vous êtes :
+    - locataire ou sous-locataire déclaré(e),
+    - non éligible à l’APL,
+    - et si vous avez des personnes à charge ou une situation familiale spécifique (mariage, enfant, etc.).
+
+Calcul du montant de l’aide :
+    Le montant de l’ALF varie selon :
+    - la zone géographique du logement,
+    - les revenus du foyer (année N-2),
+    - et le montant du loyer (plafonné selon barème CAF).
+    Exemple : un foyer de 2 adultes + 1 enfant, avec 22 000 € de revenus, en zone 2, pourra recevoir entre 180 € et 240 € mensuels.
