@@ -31,7 +31,7 @@ class ToolManager:
         procedure_tool_description = "Gives you answers about procedures to acces to French government aids and social rights. Gives reliable answers based on documents."
         procedure_tool = RagTool(settings, vectorstore_manager, procedure_tool_prompt, procedure_subtheme_filter, procedure_tool_name, procedure_tool_description).rag_tool
 
-        tools.extend(eligibility_tool, procedure_tool)
+        tools.extend([eligibility_tool, procedure_tool])
         return tools
 
     @property
