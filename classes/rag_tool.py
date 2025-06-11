@@ -6,20 +6,15 @@ from classes.settings import Settings
 from classes.vectorstore_manager import VectorstoreManager
 
 
-class EligibilityTool:
+class RagTool:
 
-    _instance = None
-    _rag_tool = None
+    def __init__(self, settings:Settings, vectorstore_manager:VectorstoreManager, tool_prompt:str, retriever_filter:dict, name:str, description:str):
+        self._name = name
+        self._description = description
+        self._prompt = tool_prompt
+        self._filter = retriever_filter
 
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
-
-    def initialize(self, settings:Settings, vectorstore_manager):
-        if self._rag_tool is None:
-            self._rag_tool = self._create_rag_tool(settings, vectorstore_manager)
-        return self._rag_tool
+        self._rag_tool = self._create_rag_tool(settings, vectorstore_manager)
 
     def _get_qa_chain(self, model, retriever):
         return ConversationalRetrievalChain.from_llm(
@@ -30,13 +25,12 @@ class EligibilityTool:
 
     def _create_rag_tool(self, settings:Settings, vectorstore_manager:VectorstoreManager):
 
-        subtheme_filter = {"subtheme": {"$in": ["conditions"]}}
-        retriever = vectorstore_manager.get_retriever(settings, subtheme_filter)
+        retriever = vectorstore_manager.get_retriever(settings, self._filter)
 
         qa_chain = self._get_qa_chain(settings.rag_model, retriever)
         chat_history = [
             SystemMessage(
-                content="Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant uniquement les documents qui te sont fournis.")
+                content=self._prompt)
         ]
 
         def ask_rag(query: str) -> str:
@@ -65,17 +59,15 @@ class EligibilityTool:
 
             return result["answer"]
 
-        eligibility_tool = Tool(
-            name="Eligibility tool",
+        rag_tool = Tool(
+            name=self._name,
             func=ask_rag,
-            description="Gives you answers about eligibility to French government aids and social rights. Gives reliable answers based on documents.",
+            description=self._description,
             return_direct=True
         )
 
-        return eligibility_tool
+        return rag_tool
 
     @property
     def rag_tool(self):
-        if self._rag_tool is None:
-            raise RuntimeError("RAG tool not initialized. Call initialize) first.")
         return self._rag_tool
