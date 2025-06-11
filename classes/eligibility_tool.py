@@ -36,7 +36,7 @@ class EligibilityTool:
         ]
 
         def ask_rag(query: str) -> str:
-            filtered_chunks = retriever.invoke(query, filter={"theme": {"$eq": "conditions"}})
+            filtered_chunks = retriever.invoke(query, filter={"subtheme": {"$eq": "conditions"}})
 
             # relevant_chunks = retriever.invoke(query)
 
