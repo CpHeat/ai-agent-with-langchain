@@ -24,8 +24,14 @@ class ToolManager:
         eligibility_tool_name = "Eligibility tool"
         eligibility_tool_description = "Gives you answers about eligibility to French government aids and social rights. Gives reliable answers based on documents."
         eligibility_tool = RagTool(settings, vectorstore_manager, eligibility_tool_prompt, eligibility_subtheme_filter, eligibility_tool_name, eligibility_tool_description).rag_tool
+        
+        procedure_subtheme_filter = {"subtheme": {"$in": ["démarches"]}}
+        procedure_tool_prompt = "Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant uniquement les documents qui te sont fournis."
+        procedure_tool_name = "Procedure tool"
+        procedure_tool_description = "Gives you answers about procedures to acces to French government aids and social rights. Gives reliable answers based on documents."
+        procedure_tool = RagTool(settings, vectorstore_manager, procedure_tool_prompt, procedure_subtheme_filter, procedure_tool_name, procedure_tool_description).rag_tool
 
-        tools.append(eligibility_tool)
+        tools.extend(eligibility_tool, procedure_tool)
         return tools
 
     @property
