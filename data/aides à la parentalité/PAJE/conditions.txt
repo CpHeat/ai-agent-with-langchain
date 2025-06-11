@@ -1,3 +1,7 @@
+Qu'appelle-t-on la prime à la naissance de la prestation d'accueil du jeune enfant (Paje) ?
+C'est une prime versée sous condition de ressources, pendant la grossesse, pour préparer l'arrivée de l'enfant.
+Elle vous aide à financer les dépenses liées à la naissance d'un d'enfant.
+
 Ces conditions sont liées à la fois à la grossesse, au plafond de ressources et à la résidence en France.
 
 Conditions liées à la grossesse
@@ -49,3 +53,10 @@ L'enfant à naître compte pour 1 enfant à charge.
 
 Résidence en France :
 Il faut séjourner en France pendant plus de 9 mois (consécutifs ou non) au cours de l'année civile de versement des prestations.
+
+La prime est versée avant le dernier jour du mois civil suivant le 6e mois de la grossesse.
+
+À savoir
+
+En cas de décès de l'enfant, la prime à la naissance est maintenue si le décès
+survient à partir du 1er jour du mois qui suit le 5e mois de grossesse.

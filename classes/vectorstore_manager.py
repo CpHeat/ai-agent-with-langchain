@@ -94,8 +94,6 @@ class VectorstoreManager:
 
     def get_retriever(self, settings, retriever_filter:dict=None):
 
-        print("retriever_filter", retriever_filter)
-
         search_kwargs = settings.retriever_params['search_kwargs']
         if retriever_filter:
             search_kwargs['filter'] = retriever_filter
