@@ -1,0 +1,14 @@
+Calcul d’éligibilité :
+    Vous êtes éligible à l’APL si :
+    - vous êtes locataire d’un logement conventionné,
+    - vous déclarez vos ressources auprès de la CAF,
+    - vous ne dépassez pas le plafond de ressources applicable à votre situation.
+
+Calcul du montant de l’aide :
+    Revenu annuel du foyer = 19 500 €
+    Loyer charges comprises = 530 €/mois
+    Zone = 2
+    Nombre de personnes dans le foyer = 2 adultes + 1 enfant
+
+    ➜ L’aide estimée s’élève à 278 €/mois selon le simulateur fictif CAF, avec un taux de prise en charge de 52 % du loyer.
+    

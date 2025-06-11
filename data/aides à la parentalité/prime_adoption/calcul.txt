@@ -1,0 +1,16 @@
+Calcul d’éligibilité :
+    La prime est accordée à tout adoptant :
+    - adoptant un enfant de moins de 20 ans,
+    - dont les ressources sont inférieures au plafond CAF.
+    -21 880 € pour la période du 1er janvier 2025 au 31 décembre 2025. Il est majoré, pour la même période, de 6 564 € par enfant à charge à compter du premier.
+
+Calcul du montant de l’aide :
+    Le montant est fixé à **1 019,40 €** par enfant adopté (avril 2024).
+    Versé une seule fois par enfant adopté.
+
+    Exemple fictif :
+    - Adoption nationale d’un enfant de 3 ans
+    - Revenu annuel du foyer : 28 000 €
+
+    ➜ Prime adoption versée intégralement : 1 019,40 €
+    ➜ + ouverture aux autres aides PAJE si conditions remplies

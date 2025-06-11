@@ -1,0 +1,14 @@
+Calcul d’éligibilité :
+    Vous devez :
+    - avoir un enfant de moins de 3 ans,
+    - et ne pas dépasser le plafond de revenus fixé par la CAF selon votre situation familiale.
+
+Calcul du montant de l’aide :
+    L’allocation de base est de **184,81 €/mois** (au 1er avril 2024).
+    Versée jusqu’au 3e anniversaire de l’enfant, sous condition de ressources.
+
+    Exemple de calcul mensuel :
+    - Parent isolé avec un enfant de moins de 3 ans
+    - Revenu fiscal de référence : 14 000 €
+
+    ➜ Allocation versée : 184,81 €/mois sur 36 mois = 6 652,92 € au total

@@ -1,0 +1,12 @@
+Calcul d’éligibilité :
+    Les aides au logement sont ouvertes :
+    - aux locataires, colocataires, sous-locataires déclarés,
+    - aux résidents en foyer ou résidence étudiante,
+    - sous condition de ressources.
+
+Calcul du montant de l’aide :
+    Calculé selon un barème CAF en fonction :
+    - de vos ressources (N-2),
+    - du montant de votre loyer plafonné,
+    - de votre situation familiale et zone géographique.
+    Barème consultable sur https://www.caf.fr.
