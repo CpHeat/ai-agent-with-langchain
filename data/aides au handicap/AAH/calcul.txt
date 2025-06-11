@@ -1,0 +1,5 @@
+Calcul d'éligibilité :
+    Si vous avez moins de 35 ans et gagnez moins de 3800€/mois (+ 700€/mois et par enfant à charge) vous êtes éligible à l'AAH
+
+Calcul du montant de l'aide :
+    L'aide équivaut ) 12000 - (2 * salaire) + (nb enfants à charge * 300) €/mois

@@ -26,7 +26,7 @@ class Settings:
     """
     search_type can be similarity, mmr or similarity_threshold
     if search_type == similarity, search_kwargs must be like {
-        'k': 10 (how many documents tu return)
+        'k': 10 (how many documents to return)
     }
     if search_type == mmr, search_kwargs must be like {
         "k": 10, (how many documents to actually return)
