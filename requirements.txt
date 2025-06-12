@@ -11,3 +11,4 @@ langchain-deepseek
 langchain-ollama
 chromadb
 streamlit
+streamlit-extras

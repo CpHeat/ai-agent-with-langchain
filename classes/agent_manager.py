@@ -41,7 +41,7 @@ class AgentManager:
             tools=tools,
             memory=memory,
             verbose=self._settings.params['debug'],
-            max_iterations=5,
+            max_iterations=10,
             handle_parsing_errors=True
         )
 

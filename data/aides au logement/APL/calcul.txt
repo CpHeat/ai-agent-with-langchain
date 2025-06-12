@@ -1,32 +1,13 @@
-Calcul d’éligibilité :
-    Vous êtes éligible à l’APL si :
-    en fonction de la zone1 0.85 si loyer supérieur a 300€ si vie a Paris 500€ aussi non 1
-    en fonction de la zone2 0.9 si loyer supérieur a 350€ aussi non 1
-    en fonction de la zone3 0.95 si loyer supérieur a 350€ aussi non 1
-    le revenue moyen est de 1600 seul
-    le revenue moyen est de 1816 en couple par personne
-    Si les revenues moyen sont inférieur a 1650€ seul ou 1816€ en couple
-    en fonction de la zone voici la formule
-    enfant a charge :  1 deduction 100€
-    enfant a charge :  2 deduction 150€
-    enfant a charge :  3 deduction 200€
-    enfant a charge :  4 deduction 240€
-    enfant a charge :  5 deduction 280€
-    enfant a charge : => a 6 +40€
-    zone_calcul_revenue=revenue_moyen*zone1 - deduction
-    exemple :
-      personne en couple avec un revenue moyen de 2000€ dnas la zone 2 1 enfant a charge
-      2000*0.9 - 100=1700
-      comme le zone_calcul_revenue est a 1700€ avec la formule de zone la personne est éligible car la personne est en couple
-      et dans la zone 2 qui est inférieur a 1816€
-
-Calcul du montant de l’aide :
-    seul :
-    si revenue moyen  est entre 500€ - 900€ = 50% aide annuel
-    si revenue moyen  est entre 900€ - 1500€ = 33% aide annuel
-    si revenue moyen  est entre 1500€ - 1650 = 20% aide annuel
+Calcul du montant de l’APL :
+    calcul de base
+    personne seule :
+    si revenu moyen est entre 500€ - 900€ = 50% du loyer
+    si revenu moyen est entre 900€ - 1500€ = 33% du loyer
+    si revenu moyen est entre 1500€ - 1650 = 20% du loyer
     en couple :
-    si revenue moyen  est entre 500€ - 1000€ = 50% aide annuel
-    si revenue moyen  est entre 1000€ - 1550€ = 33% aide annuel
-    si revenue moyen  est entre 1550€ - 1816 = 20% aide annuel
-    
+    si revenu moyen est entre 500€ - 1000€ = 50% du loyer
+    si revenu moyen est entre 1000€ - 1550€ = 33% du loyer
+    si revenu moyen est entre 1550€ - 1816 = 20% du loyer
+
+    Le revenu utilisé pour le calcul est diminué de 300€ par enfant à charge
+    Si vous habitez à Paris le revenu moyen éligible est majoré de 15%
