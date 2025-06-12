@@ -2,6 +2,7 @@ from abc import ABC
 from datetime import datetime
 
 import streamlit as st
+from streamlit_extras.let_it_rain import rain
 
 from classes.settings import Settings
 
@@ -33,10 +34,10 @@ class InterfaceManager(ABC):
             Provides the agent
         """
         cls._settings = settings
-        cls._create_interface( agent_manager)
+        cls._create_interface(agent_manager, settings)
 
     @classmethod
-    def _create_interface(cls, agent_manager):
+    def _create_interface(cls, agent_manager, settings:Settings):
         """
         Creates the interface for the chat.
 
@@ -61,7 +62,7 @@ class InterfaceManager(ABC):
         if 'chat_history' not in st.session_state:
             st.session_state.chat_history = []
 
-        cls._body()
+        cls._body(settings)
         cls._css()
 
     @classmethod
@@ -82,13 +83,13 @@ class InterfaceManager(ABC):
             """, unsafe_allow_html=True)
 
     @classmethod
-    def _body(cls) -> None:
+    def _body(cls, settings:Settings) -> None:
         """ The body of the chat. """
         cls._messages()
-        cls._user_input()
+        cls._user_input(settings)
 
     @classmethod
-    def _user_input(cls) -> None:
+    def _user_input(cls, settings:Settings) -> None:
         """ Shows and handles the user input. """
         if prompt := st.chat_input("Posez votre question sur les aides gouvernementales…"):
             cls._css()
@@ -110,7 +111,7 @@ class InterfaceManager(ABC):
 
                     st.session_state.messages.append({"role": "assistant", "content": response["output"], "type": "ai"})
 
-                    cls._debug()
+                    cls._debug(settings)
 
             st.rerun()
 
@@ -120,6 +121,8 @@ class InterfaceManager(ABC):
         cls._important_context()
         cls._debug_checkbox()
         cls._reset_button()
+        cls._unsatisfied_button()
+        cls._satisfied_button()
 
     @classmethod
     def _messages(cls) -> None:
@@ -137,22 +140,22 @@ class InterfaceManager(ABC):
                     st.markdown(message["content"])
 
     @classmethod
-    def _debug(cls) -> None:
+    def _debug(cls, settings:Settings) -> None:
         """ Stores the debug information in the messages. """
         debug_message = ""
 
-        if cls._settings.params['debug_used_tool'] is not None:
-            debug_message += f"Agent used a tool: {cls._settings.params['debug_used_tool']}\n\n"
-            debug_message += f"Agent query to the tool: {cls._settings.params['debug_query']}\n\n"
+        if settings.params['debug_used_tool'] is not None:
+            debug_message += f"Agent used a tool: {settings.params['debug_used_tool']}\n\n"
+            debug_message += f"Agent query to the tool: {settings.params['debug_query']}\n\n"
         else:
             debug_message += f"Agent used no tool\n\n"
 
-        if cls._settings.params['debug_used_tool'] is not None:
-            debug_message += f"{len(cls._settings.params['debug_log'])} document(s) used\n"
+        if settings.params['debug_used_tool'] is not None:
+            debug_message += f"{len(settings.params['debug_log'])} document(s) used\n"
 
         st.session_state.messages.append({"role": "assistant", "content": debug_message, "type": "debug"})
 
-        for debug_dict in cls._settings.params['debug_log']:
+        for debug_dict in settings.params['debug_log']:
             debug_message = (
                 f"Source: {debug_dict['document_source']} | Theme: {debug_dict['document_large_theme']} | Subtheme: {debug_dict['document_theme']}\n"
             )
@@ -160,9 +163,9 @@ class InterfaceManager(ABC):
                 {"role": "assistant", "content": debug_message, "extended-content": debug_dict['document_content'],
                  "type": "debug-source"})
 
-        cls._settings.params['debug_log'] = []
-        cls._settings.params['debug_query'] = None
-        cls._settings.params['debug_used_tool'] = None
+        settings.params['debug_log'] = []
+        settings.params['debug_query'] = None
+        settings.params['debug_used_tool'] = None
 
     @classmethod
     def _important_context(cls) -> None:
@@ -196,45 +199,53 @@ class InterfaceManager(ABC):
             st.rerun()
 
     @classmethod
+    def _unsatisfied_button(cls):
+        """ A button that triggers a happy reaction """
+        if st.sidebar.button("Je ne suis pas satisfait"):
+            rain(
+                emoji="😞",
+                font_size=54,
+                falling_speed=5,
+                animation_length=1,
+            )
+
+    @classmethod
+    def _satisfied_button(cls):
+        """ A button that triggers a happy reaction """
+        if st.sidebar.button("Je suis satisfait"):
+            st.balloons()
+
+    @classmethod
     def _css(cls) -> None:
         """ CSS for the chat. """
         st.markdown("""
                 <style>
+                button[kind="header"], button[kind="headerNoPadding"], div[aria-label="dialog"] {
+                    color: Snow;
+                }
                 .main-header {
                     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    padding: 2rem 0;
+                    padding: 40px 20px;
                     border-radius: 15px;
                     margin-bottom: 2rem;
                     text-align: center;
                     color: white;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                }                
+                    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+                }
                 .main-header h1 {
                     font-size: 2.5rem;
                     margin-bottom: 0.5rem;
                     font-weight: 700;
-                }    
+                }
                 .main-header p {
                     font-size: 1.1rem;
                     opacity: 0.9;
                     margin: 0;
                 }
-                .stChatMessage {                
-                    display: flex;
-                    align-items: flex-start !important;              
-                    background: #f8f9fa;
-                    border-radius: 10px;
-                    border-left: 2px solid #667eea;
-                    border-bottom: 2px solid #667eea;
-                    color: #764ba2;
-                }
-                div[data-testid="stChatMessage"] p {
-                    font-weight: bold;
-                    color: #667eea;
-                    font-family: 'Courier New', Courier, monospace !important;
-                    font-size: 16;
-                    min-height: 2rem;
-                    margin: 0;
+                .stChatMessage {
+                    background-color: Snow;
+                    border-left: 2px solid DarkOrange;
+                    border-bottom: 2px solid DarkOrange;
                 }
                 .debug-message {
                     background-color: #fff3cd;
