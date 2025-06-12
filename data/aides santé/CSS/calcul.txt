@@ -1,13 +1,14 @@
 Calcul d’éligibilité :
     Vous êtes éligible à la Complémentaire Santé Solidaire (CSS) si :
-    - vos ressources mensuelles sont inférieures à 1 077 € (seul) ou 1 616 € (couple),
+    - Si vos ressources mensuelles sont inférieures personne seul à 1 077 € (seul) 
+    - Si vos ressources mensuelles sont inférieures personne en couple à 1816 € (couple)
     - vous êtes en situation régulière en France.
 
 Calcul du montant de l’aide :
     CSS est **gratuite** si vos ressources sont en dessous du seuil de gratuité.
-    Une participation mensuelle peut s’appliquer si vous êtes juste au-dessus (entre 8 € et 30 € par mois selon l’âge).
+    Une participation mensuelle peut s’appliquer si vous êtes juste au-dessus (entre 8 € et 30 € par mois selon l’âge (18-67 ans aprés la retraite sa deviens gratuit)).
 
-    Calcul du reste à charge (fictif) :
+    Calcul du reste à charge :
     Une personne avec CSS paye :
     - 0 € pour une consultation médecin généraliste
     - 0 € pour des lunettes correctrices de base
