@@ -15,7 +15,7 @@ Calcul d’éligibilité :
     enfant a charge : => a 6 +40€
     zone_calcul_revenue=revenue_moyen*zone1 - deduction
     exemple :
-      peronne en couple avec un revenue moyen de 2000€ dnas la zone 2 1 enfant a charge
+      personne en couple avec un revenue moyen de 2000€ dnas la zone 2 1 enfant a charge
       2000*0.9 - 100=1700
       comme le zone_calcul_revenue est a 1700€ avec la formule de zone la personne est éligible car la personne est en couple
       et dans la zone 2 qui est inférieur a 1816€
