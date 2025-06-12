@@ -10,5 +10,4 @@ langchain-openai
 langchain-deepseek
 langchain-ollama
 chromadb
-duckduckgo-search
 streamlit

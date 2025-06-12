@@ -6,6 +6,7 @@ class ToolManager:
 
     _instance = None
     _tools:list = None
+    _settings:Settings = None
 
     def __new__(cls):
         if cls._instance is None:
@@ -13,26 +14,18 @@ class ToolManager:
         return cls._instance
 
     def initialize(self, settings:Settings, vectorstore_manager):
+        self._settings = settings
         if self._tools is None:
-            self._tools = self._create_tools(settings, vectorstore_manager)
+            self._tools = self._create_tools(vectorstore_manager)
         return self
 
-    def _create_tools(self, settings, vectorstore_manager):
+    def _create_tools(self, vectorstore_manager):
         tools = []
-        eligibility_subtheme_filter = {"subtheme": {"$in": ["conditions"]}}
-        eligibility_tool_prompt = "Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant uniquement les documents qui te sont fournis."
-        eligibility_tool_name = "Eligibility tool"
-        eligibility_tool_description = "Gives you answers about eligibility to French government aids and social rights. Gives reliable answers based on documents."
-        eligibility_tool = RagTool(settings, vectorstore_manager, eligibility_tool_prompt, eligibility_subtheme_filter, eligibility_tool_name, eligibility_tool_description).rag_tool
-        
-        simulation_calcul_subtheme_filter = {"subtheme": {"$in": ["calcul"]}}
-        simulation_calcul_tool_prompt = "Tu es un assistant qui aide à faire des calculs les droits disponibles en utilisant uniquement les documents qui te sont fournis sur le calcul."
-        simulation_calcul_tool_name = "calcul tool"
-        simulation_calcul_description = "do calcul for egibility and amount aid/right for French government aids and social rights. Gives reliable answers based on documents calcul."
-        simulation_calcul_tool=RagTool(settings, vectorstore_manager, simulation_calcul_tool_prompt, simulation_calcul_subtheme_filter, simulation_calcul_tool_name, simulation_calcul_description).rag_tool
 
-        tools.append(eligibility_tool)
-        tools.append(simulation_calcul_tool)
+        for tool in self._settings.tools:
+            rag_tool = RagTool(self._settings, vectorstore_manager, tool['prompt'], tool['filter'], tool['name'], tool['description']).rag_tool
+            tools.append(rag_tool)
+
         return tools
 
     @property

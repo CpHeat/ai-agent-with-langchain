@@ -13,8 +13,9 @@ class RagTool:
         self._description = description
         self._prompt = tool_prompt
         self._filter = retriever_filter
+        self._settings:Settings = settings
 
-        self._rag_tool = self._create_rag_tool(settings, vectorstore_manager)
+        self._rag_tool = self._create_rag_tool(vectorstore_manager)
 
     def _get_qa_chain(self, model, retriever):
         return ConversationalRetrievalChain.from_llm(
@@ -23,17 +24,20 @@ class RagTool:
             return_source_documents=True
         )
 
-    def _create_rag_tool(self, settings:Settings, vectorstore_manager:VectorstoreManager):
+    def _create_rag_tool(self, vectorstore_manager:VectorstoreManager):
 
-        retriever = vectorstore_manager.get_retriever(settings, self._filter)
+        retriever = vectorstore_manager.get_retriever(self._settings, self._filter)
+        print(type(retriever))
 
-        qa_chain = self._get_qa_chain(settings.rag_model, retriever)
+        qa_chain = self._get_qa_chain(self._settings.rag_model, retriever)
         chat_history = [
             SystemMessage(
                 content=self._prompt)
         ]
 
         def ask_rag(query: str) -> str:
+            print("tool used")
+            self._settings.params['debug_used_tool'] = f"Tool used: {self._name}"
 
             relevant_chunks = retriever.invoke(query)
             input_message = (
@@ -49,8 +53,8 @@ class RagTool:
 
             sources = result["source_documents"]
             for doc in sources:
-                settings.params['debug_query'] = query
-                settings.params['debug_log'].append({
+                self._settings.params['debug_query'] = query
+                self._settings.params['debug_log'].append({
                     "document_source": doc.metadata["source"],
                     "document_large_theme": doc.metadata["large_theme"],
                     "document_theme": doc.metadata["theme"],
