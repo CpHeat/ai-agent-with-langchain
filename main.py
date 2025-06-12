@@ -11,4 +11,4 @@ if __name__ == "__main__":
     vectorstore_manager = VectorstoreManager().initialize(settings)
     tools = ToolManager().initialize(settings, vectorstore_manager).tools
     agent_executor = AgentManager().initialize(settings, tools).executor
-    interface_manager = InterfaceManager().initialize(settings, agent_executor)
+    InterfaceManager().initialize(settings, agent_executor)

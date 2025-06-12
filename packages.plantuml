@@ -1,0 +1,24 @@
+@startuml packages
+set namespaceSeparator none
+package "classes" as classes {
+}
+package "classes.agent_manager" as classes.agent_manager {
+}
+package "classes.interface_manager" as classes.interface_manager {
+}
+package "classes.rag_tool" as classes.rag_tool {
+}
+package "classes.settings" as classes.settings {
+}
+package "classes.tool_manager" as classes.tool_manager {
+}
+package "classes.vectorstore_manager" as classes.vectorstore_manager {
+}
+classes.agent_manager --> classes.settings
+classes.interface_manager --> classes.settings
+classes.rag_tool --> classes.settings
+classes.rag_tool --> classes.vectorstore_manager
+classes.tool_manager --> classes.rag_tool
+classes.tool_manager --> classes.settings
+classes.vectorstore_manager --> classes.settings
+@enduml
