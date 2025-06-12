@@ -15,7 +15,7 @@ class InterfaceManager:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def initialize(self, settings:Settings, agent_manager):
+    def initialize(self, settings: Settings, agent_manager):
         if self._interface is None:
             self._interface = self._create_interface(settings, agent_manager)
         return self._interface
