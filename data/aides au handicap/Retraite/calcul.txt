@@ -4,18 +4,7 @@ Calcul d’éligibilité :
     - vous avez une durée d’assurance minimale avec cotisations.
 
 Calcul du montant de l’aide :
-    Le montant dépend :
-    - 90 % de votre salaire moyen (25 meilleures années),
-    - de la durée cotisée,
-    - et d’un éventuel taux plein accordé sans décote.
-    Un simulateur est disponible sur le site [info-retraite.fr](https://www.info-retraite.fr) si vous voulez plus de précision.
-
-    Exemple fictif :
-    - Taux d’invalidité : 60 %
-    - Début de carrière à 20 ans
-    - 168 trimestres validés à 59 ans
-
-    ➜ Possibilité de départ anticipé à taux plein à 59 ans
-    ➜ Pension estimée : 1 320 € net/mois selon simulateur MDPH
-
-    Bonus : majoration possible de 40 trimestres supplémentaires si invalidité > 80 %
+    - Si vous êtes handicapé a 50% vous devez faire :
+    montant retraite_handicap=1.1*montant_de_la_retraite
+    - Si vous êtes handicapé a 75% vous devez faire : mont_retraite_handicap=1.15*montant_de_la_retraite
+    - Si vous êtes handicapé a 100% vous devez faire : mont_retraite_handicap=1.2*montant_de_la_retraite

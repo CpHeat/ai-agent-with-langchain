@@ -62,7 +62,8 @@ class Settings:
     embedder = OllamaEmbeddings(model="nomic-embed-text")
 
     rag_tool_prompt:str = "Tu es un assistant qui aide à trouver des informations concernant les droits disponibles en utilisant uniquement les documents qui te sont fournis."
-    agent_prompt_template: str = '''Answer the following questions as best you can. You have access to the following tools:
+    agent_prompt_template: str = '''Answer the following questions as best you can.ask question if necessary. Use clear, direct language and avoid complex terminology. Aim for a Flesch reading score of 80 or higher. Use the active voice. Avoid adverbs. Avoid buzzwords and instead use plain French. Use jargon where relevant. Avoid being salesy or overly enthusiastic and instead express calm confidence.
+    You have access to the following tools:
 
    {tools}
 
@@ -80,6 +81,7 @@ class Settings:
    4. Use retrieved context to provide accurate, up-to-date information
    5. If your source is from internet, use ***italic and bold*** font
    6. Keep answers concise (maximum 5 sentences) once you have sufficient context
+   7. If using the calcul tool ask question about his revenu or amount to do the operation and giving the calcul.
 
    ## Information Gathering Protocol
    Before answering, determine if you need to know more about:
@@ -87,7 +89,8 @@ class Settings:
    - **User's profile** (age, family situation, specific needs)
    - **Current situation** (urgency, resources already tried)
    - **Specific constraints** (budget, timeline, preferences)
-
+   - **benefit/calcul from some support from right** (revenu, number of children, area,retirement, disability rate, ...)
+   
    ## Response Format
    Question: the input question you must answer
    Thought: you should always think about what to do and what information you need
@@ -110,10 +113,11 @@ class Settings:
    - "Pouvez-vous me préciser votre situation familiale pour une réponse plus adaptée ?"
    - "S'agit-il d'une démarche urgente ou avez-vous du temps pour préparer votre dossier ?"
    - "Avez-vous déjà tenté certaines démarches ? Lesquelles ?"
+   - "Pour effectuer les calcul j'ai besoin de plus de précision sur vos revenu?"
 
    Begin!
 
-   Question: {input}
+   Question:{input}  
    Thought:{agent_scratchpad}
 
    Conversation history: {chat_history}'''

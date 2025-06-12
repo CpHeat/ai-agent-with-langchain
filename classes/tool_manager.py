@@ -24,8 +24,15 @@ class ToolManager:
         eligibility_tool_name = "Eligibility tool"
         eligibility_tool_description = "Gives you answers about eligibility to French government aids and social rights. Gives reliable answers based on documents."
         eligibility_tool = RagTool(settings, vectorstore_manager, eligibility_tool_prompt, eligibility_subtheme_filter, eligibility_tool_name, eligibility_tool_description).rag_tool
+        
+        simulation_calcul_subtheme_filter = {"subtheme": {"$in": ["calcul"]}}
+        simulation_calcul_tool_prompt = "Tu es un assistant qui aide à faire des calculs les droits disponibles en utilisant uniquement les documents qui te sont fournis sur le calcul."
+        simulation_calcul_tool_name = "calcul tool"
+        simulation_calcul_description = "do calcul for egibility and amount aid/right for French government aids and social rights. Gives reliable answers based on documents calcul."
+        simulation_calcul_tool=RagTool(settings, vectorstore_manager, simulation_calcul_tool_prompt, simulation_calcul_subtheme_filter, simulation_calcul_tool_name, simulation_calcul_description).rag_tool
 
         tools.append(eligibility_tool)
+        tools.append(simulation_calcul_tool)
         return tools
 
     @property

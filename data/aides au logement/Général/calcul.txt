@@ -1,12 +1,19 @@
 Calcul d’éligibilité :
     Les aides au logement sont ouvertes :
-    - aux locataires, colocataires, sous-locataires déclarés,
-    - aux résidents en foyer ou résidence étudiante,
-    - sous condition de ressources.
+    il faut que le taux d'égibilité (TE) soit supérieur a 65%
+    avec le calcul suivant :
+    NE(Nombre enfant)
+    NE = 0.1 si 1 enfant
+    NE = 0.12 si 2 enfant
+    NE = 0.14 si 3 enfant
+    NE = 0.16 si 4 enfant
+    aprés 5 enfant augmenter de 0.02 le NE
+    TE =  (Revenue_annuel_brut * NE) /26200
+    TE = TE*100 (pour avoir un taux)
+
+
 
 Calcul du montant de l’aide :
-    Calculé selon un barème CAF en fonction :
-    - de vos ressources (N-2),
-    - du montant de votre loyer plafonné,
-    - de votre situation familiale et zone géographique.
-    Barème consultable sur https://www.caf.fr.
+    Calculé selon un barème :
+    montant_aide_annuel = Revenue_annuel_brut*1.06
+    montant_aide_mensuel = montant_aide_annuel/12 
