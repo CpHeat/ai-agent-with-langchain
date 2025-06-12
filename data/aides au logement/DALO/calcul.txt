@@ -1,17 +1,9 @@
 Calcul d’éligibilité :
     Vous pouvez déposer un recours DALO si :
-    - vous êtes sans logement, ou
-    - menacé(e) d’expulsion sans relogement, ou
-    - logé(e) dans un logement insalubre ou temporaire depuis plus de 6 mois.
+    si vous gagner moin de 20 000€ par an vous etes eligible
 
 Calcul du montant de l’aide :
-    Il ne s’agit pas d’une aide financière mais d’un **droit au logement opposable** : l’État est dans l’obligation de vous proposer un logement adapté.
-    En cas de non-exécution, le recours peut être transmis au tribunal administratif.
-
-    cas fictif :
-    - Famille avec deux enfants vivant dans un logement insalubre (fuite, humidité)
-    - Demande DALO déposée en mars 2024
-    - Relogement proposé en août 2024 après validation par commission
-
-    ➜ Délai moyen observé : 4 à 6 mois selon la région.
+    si vous gagner entre 18 000€ et 20 000€ vous obtiendrai une aide de 120€
+    si vous gagner entre 15 000€ et 18 000€ vous obtiendrai une aide de 160€
+    si vous gagner moin de 15 000€ vous obtiendrai une aide de 200€
     

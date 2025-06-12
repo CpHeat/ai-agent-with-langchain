@@ -11,7 +11,7 @@ Ce projet a été réalisé par [Charle](https://github.com/CpHeat), [Louis](htt
 
 **🎯 Objectif du projet**
 
-Ce prototype simule un assistant numérique dans un contexte réel de service public, permettant à un citoyen de :
+Ce prototype simule un assistant numérique dans un contexte réel de service publique, permettant à un citoyen de :
 
 Trouver des informations claires et contextualisées sur ses droits (ex. aides au logement, handicap, aides à l'enfance).
 
@@ -25,6 +25,8 @@ Dialoguer facilement via une interface web.
 
 Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - Lille.
 ## 🏗️ Architecture & Composants IA
+
+![classe diagramme](image\Class_Diagram.png)
 
 1. RAG (Retrieval-Augmented Generation)
 - Recherche dans des documents vectorisés (ChromaDB).
@@ -52,20 +54,26 @@ Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - L
 ## Arborescence du projet
 
 Voici l'aborescence du projet pour mieux localiser certains fichiers : 
-
+- **test/** : Dossier contenant les test. 
+- **classes/** : Dossier contenant les documents d'information sur les aides et droits français.
+  - **`agent_manager.py** : Classe qui permet d'exécuter l'agent.
+  - **interface_manager.py** : Classe qui permet la mise en place interface chatbot agent tool.
+  - **rag_tool.py** : Classe d'outils pour accéder au database vecteur RAG.
+  - **settings.py** : Classe qui permet d'acéder au variable de paramètre.
+  - **tool_manager.py** : Classe qui permet de gérer les outils du RAG.
+  - **vectoristore_mananger.py** : Classe qui permet de la mise en place du DB vectoriser
 - **data/** : Dossier contenant les documents d'information sur les aides et droits français.
   - **`aide au logement/** : Dossier contenant les documents d'aide au logement.
-  - **handicap/** : Dossier contenant les documents d'aide pour handicapé.
-  - **enfant/** : Dossier contenant les documents d'aide au enfant.
+  - **aides au handicap/** : Dossier contenant les documents d'aide pour handicapé.
+  - **aides à la parentalité/** : Dossier contenant les documents d'aide au enfant.
+  - **aides santé/** : Dossier contenant les documents d'aide au enfant.
 - **db/** : Dossier contenant la vectorisation des documents en db.
   - **chroma.sqlite3** : Fichier query de la DB.
   - **de55fs45119gd5**: Vecorisation des documents.
 - **main.py** : Point d'entrée de l'application.
-- **settings.py** : Fichier paramétre de l'application.
-- **rag.ypynb**: Notebook sur le RAG
-- **agent.ypynb**: Notebook sur l'agent IA
-- **interface.py** : Fichier pour la classe représentant une planète.
+- **requirement.txt**: fichier text avec les bilbliothéque requise
 - **README.md** : Documentation du projet.
+
 ## Pré-requis et installation 
 
 **Récupére le projet chatbot**
@@ -84,30 +92,30 @@ streamlit run main.py
 
 **Accès aux droits** : notre assistant se concentre sur la compréhension des droits sociaux et administratifs dans les domaines suivants :
 
-- Aides au logement
+- Aides au logement.
 
-- Aides pour personnes en situation de handicap
+- Aides pour personnes en situation de handicap.
 
 - Aides pour familles et enfants
 ## 👥 Contributions des membres de l'équipe
 - **[Charle](https://github.com/CpHeat)**:
-  - Récupération des données & structuration des dossiers
-
+  - Récupération des données & structuration des dossiers.
   - Vectorisation et mise en place du système RAG
-
-  - Coordination entre RAG et agent
-
-  - Refactorisation et clarté du code
+  - Coordination entre RAG et agent.
+  - Refactorisation et clarté du code.
+  - Intégration des outils agent personnalisés.
     
 - **[Louis](https://github.com/lougail)**: 
-    - Développement de l’interface Streamlit (UI/UX)
-    - Intégration de l’agent IA dans l’interface
-    - Tests de communication avec le backend IA
+    - Développement de l’interface Streamlit (UI/UX).
+    - Intégration de l’agent IA dans l’interface.
+    - Tests de communication avec le backend IA.
+    - Manipulation et creation d'outils RAG.
 
 - **[Sayana](https://github.com/sayana-project)**: 
-    - Implémentation de l’agent conversationnel
-    - Prompting, mémoire conversationnelle
-    - Création et intégration des outils personnalisés
+    - Implémentation de l’agent conversationnel.
+    - Prompting, mémoire conversationnelle.
+    - Création et intégration des outils agent personnalisés.
+    - Manipulation et creation d'outils RAG.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
