@@ -144,18 +144,29 @@ class InterfaceManager(ABC):
         """ Stores the debug information in the messages. """
         debug_message = ""
 
-        if settings.params['debug_used_tool'] is not None:
-            debug_message += f"Agent used a tool: {settings.params['debug_used_tool']}\n\n"
-            debug_message += f"Agent query to the tool: {settings.params['debug_query']}\n\n"
+        if 'debug_used_tool' not in st.session_state:
+            st.session_state.debug_used_tool = None
+        if 'debug_log' not in st.session_state:
+            st.session_state.debug_log = []
+        if 'debug_query' not in st.session_state:
+            st.session_state.debug_query = None
+
+        used_tool = st.session_state.debug_used_tool
+        debug_query = st.session_state.debug_query
+        debug_log = st.session_state.debug_log
+
+        if used_tool is not None:
+            debug_message += f"Agent used a tool: {used_tool}\n\n"
+            debug_message += f"Agent query to the tool: {debug_query}\n\n"
         else:
             debug_message += f"Agent used no tool\n\n"
 
-        if settings.params['debug_used_tool'] is not None:
-            debug_message += f"{len(settings.params['debug_log'])} document(s) used\n"
+        if used_tool is not None:
+            debug_message += f"{len(debug_log)} document(s) used\n"
 
         st.session_state.messages.append({"role": "assistant", "content": debug_message, "type": "debug"})
 
-        for debug_dict in settings.params['debug_log']:
+        for debug_dict in debug_log:
             debug_message = (
                 f"Source: {debug_dict['document_source']} | Theme: {debug_dict['document_large_theme']} | Subtheme: {debug_dict['document_theme']}\n"
             )
@@ -163,9 +174,9 @@ class InterfaceManager(ABC):
                 {"role": "assistant", "content": debug_message, "extended-content": debug_dict['document_content'],
                  "type": "debug-source"})
 
-        settings.params['debug_log'] = []
-        settings.params['debug_query'] = None
-        settings.params['debug_used_tool'] = None
+        st.session_state.debug_log = []
+        st.session_state.debug_query = None
+        st.session_state.debug_used_tool = None
 
     @classmethod
     def _important_context(cls) -> None:

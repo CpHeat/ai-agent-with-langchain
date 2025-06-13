@@ -1,6 +1,7 @@
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 from langchain_core.messages import SystemMessage
 from langchain_core.tools import Tool
+import streamlit as st
 
 from classes.settings import Settings
 from classes.vectorstore_manager import VectorstoreManager
@@ -24,7 +25,6 @@ class RagTool:
         )
 
     def _create_rag_tool(self, vectorstore_manager:VectorstoreManager, settings:Settings):
-
         retriever = vectorstore_manager.get_retriever(settings, self._filter)
 
         qa_chain = self._get_qa_chain(settings.rag_model, retriever)
@@ -34,7 +34,16 @@ class RagTool:
         ]
 
         def ask_rag(query: str) -> str:
-            settings.params['debug_used_tool'] = f"Tool used: {self._name}"
+
+            if 'debug_used_tool' not in st.session_state:
+                st.session_state.debug_used_tool = None
+            if 'debug_log' not in st.session_state:
+                st.session_state.debug_log = []
+            if 'debug_query' not in st.session_state:
+                st.session_state.debug_query = None
+
+            st.session_state.debug_used_tool = f"Tool used: {self._name}"
+            st.session_state.debug_query = query
 
             relevant_chunks = retriever.invoke(query)
             input_message = (
@@ -50,8 +59,7 @@ class RagTool:
 
             sources = result["source_documents"]
             for doc in sources:
-                settings.params['debug_query'] = query
-                settings.params['debug_log'].append({
+                st.session_state.debug_log.append({
                     "document_source": doc.metadata["source"],
                     "document_large_theme": doc.metadata["large_theme"],
                     "document_theme": doc.metadata["theme"],
