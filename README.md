@@ -1,4 +1,4 @@
-![bot ada](./image/ada.png)
+![bot ada](./image/ada.jpg)
 
 # 🤖 agent IA citoyen (ADA-ChatBot) avec langchain 
 
