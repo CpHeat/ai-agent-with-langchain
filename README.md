@@ -1,7 +1,6 @@
+![bot ada](./image/ada.jpg)
 
 # 🤖 agent IA citoyen (ADA-ChatBot) avec langchain 
-
-![bot ADA](image\ada.png)
 
 Ce projet vise à concevoir un assistant conversationnel intelligent capable de répondre en langage naturel à des questions portant sur les droits sociaux et administratifs, à partir de documents institutionnels publics.
 
@@ -28,7 +27,7 @@ Ce prototype simule un assistant numérique dans un contexte réel de service pu
 Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - Lille.
 ## 🏗️ Architecture & Composants IA
 
-![classe diagramme](image\Class_Diagram.png)
+![classe diagramme](./image/Class_Diagram.png)
 
 1. RAG (Retrieval-Augmented Generation)
 - Recherche dans des documents vectorisés (ChromaDB).
