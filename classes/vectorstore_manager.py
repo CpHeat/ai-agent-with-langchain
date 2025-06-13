@@ -61,6 +61,7 @@ class VectorstoreManager:
 
         if not os.path.exists(db_dir):
             print("Initializing vector store...")
+            print("Generating chunks...")
 
             for root, dirs, files in os.walk(data_dir):
                 for file in files:
@@ -93,13 +94,15 @@ class VectorstoreManager:
                                 )
                             )
 
-            print(f"Vectorstore created with {len(documents)} chunks.")
+            print(f"{len(documents)} chunks generated.")
+            print("Persisting vectorstore, this can take a while...")
             vectorstore = Chroma.from_documents(
                 documents,
                 embedding=self._settings.embedder,
                 collection_name="droits",
                 persist_directory=db_dir
             )
+            print(f"Vectorstore persisted.")
         else:
             vectorstore = Chroma(
                 persist_directory=db_dir,
