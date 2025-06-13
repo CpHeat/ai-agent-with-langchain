@@ -55,6 +55,7 @@ Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - L
 ## Arborescence du projet
 
 Voici l'aborescence du projet pour mieux localiser certains fichiers : 
+- **.streamlit/** : Dossier contenant le thème personalisé Streamlit
 - **classes/** : Dossier contenant les documents d'information sur les aides et droits français.
   - **`agent_manager.py** : Classe qui permet d'exécuter l'agent.
   - **interface_manager.py** : Classe qui permet la mise en place interface chatbot agent tool.
@@ -89,11 +90,16 @@ ollama pull mxbai-embed-large
 ```bash
 git clone https://github.com/CpHeat/ai-agent-with-langchain.git
 ```
+**Créer un fichier .env à la racine contenant une clé API DeepSeek**
+```python
+DEEPSEEK_API_KEY=**********
+```
 **Ouvrir le projet avec VSCode ou PyCharm**
 **Créer un environnement virtuel Python 3.13**
-**Installer les dépendances depuis le terminal dans le dossier du projet**
+**depuis le terminal dans le dossier du projet**
+**Installer les dépendances**
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt --no-cache-dir
 ```
 **Lancer l’interface utilisateur**
 ```python
