@@ -1,5 +1,6 @@
+![bot ada](./image/ada.jpg)
 
-# 🤖 agent IA citoyen (ChatBot) avec langchain 
+# 🤖 agent IA citoyen (ADA-ChatBot) avec langchain 
 
 Ce projet vise à concevoir un assistant conversationnel intelligent capable de répondre en langage naturel à des questions portant sur les droits sociaux et administratifs, à partir de documents institutionnels publics.
 
@@ -13,20 +14,20 @@ Ce projet a été réalisé par [Charle](https://github.com/CpHeat), [Louis](htt
 
 Ce prototype simule un assistant numérique dans un contexte réel de service publique, permettant à un citoyen de :
 
-Trouver des informations claires et contextualisées sur ses droits (ex. aides au logement, handicap, aides à l'enfance).
+- Trouver des informations claires et contextualisées sur ses droits (ex. aides au logement, handicap, aides à l'enfance).
 
-Poser des questions complexes (ex. éligibilité, résumé de procédures).
+- Poser des questions complexes (ex. éligibilité, résumé de procédures).
 
-Utiliser des outils intégrés (résumé, simplification, évaluation d’éligibilité).
+- Utiliser des outils intégrés (résumé, simplification, évaluation d’éligibilité).
 
-Restreindre la recherche à un domaine pour améliorer la pertinence.
+- Restreindre la recherche à un domaine pour améliorer la pertinence.
 
-Dialoguer facilement via une interface web.
+- Dialoguer facilement via une interface web.
 
 Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - Lille.
 ## 🏗️ Architecture & Composants IA
 
-![classe diagramme](image\Class_Diagram.png)
+![classe diagramme](./image/Class_Diagram.png)
 
 1. RAG (Retrieval-Augmented Generation)
 - Recherche dans des documents vectorisés (ChromaDB).
@@ -74,8 +75,15 @@ Voici l'aborescence du projet pour mieux localiser certains fichiers :
 - **requirement.txt**: fichier text avec les bilbliothéque requise
 - **README.md** : Documentation du projet.
 
-## Pré-requis et installation 
+## Pré-requis et utilisation
 
+**Intallation d'ollama**
+aller sur https://ollama.com/ .
+Télécharger exe et installer.
+dans une console fait la commande suivante
+```
+ollama run llama3
+```
 **Récupére le projet chatbot**
 ```bash
 git clone https://github.com/CpHeat/ai-agent-with-langchain.git
@@ -97,6 +105,72 @@ streamlit run main.py
 - Aides pour personnes en situation de handicap.
 
 - Aides pour familles et enfants
+
+## 🛠️ Choix techniques
+
+🛠️ Choix techniques
+Nous avons fait les choix suivants pour construire un agent IA robuste, modulaire et facilement évolutif :
+
+⚙️ 1. Architecture modulaire (multi-classes Python)
+- Séparation claire des responsabilités via des classes (AgentManager, VectorStoreManager, ToolManager, etc.).
+
+- Facilite la maintenance, les tests et l'ajout futur de nouvelles fonctionnalités.
+
+🔍 2. Recherche contextuelle (RAG - Retrieval Augmented Generation)
+- Vectorisation des documents institutionnels avec ChromaDB pour permettre une recherche rapide et pertinente.
+
+- LangChain Retriever avec similarité cosinus pour fournir du contexte utile à l’agent IA.
+
+🤖 3. Agent LangChain + outils personnalisés
+Utilisation d’un agent LangChain pour gérer la logique de dialogue et le choix d’outils à chaque étape.
+
+Intégration d’outils sur mesure :
+
+- Résumé de texte
+
+- Simplification de langage administratif
+
+- Calculs d’éligibilité (revenu, logement, etc.)
+
+- Calculs montant d'aide
+
+🧠 4. Mémoire conversationnelle
+Utilisation de ConversationBufferMemory pour conserver l'historique de la discussion.
+
+Permet des échanges plus naturels et du suivi de contexte sur plusieurs questions.
+
+🖥️ 5. Interface avec Streamlit
+Interface simple et épurée pour permettre une expérience fluide au citoyen.
+
+Ajout d’une proposition contextuelle de filtre par domaine (logement, santé, etc.) dès les premières interactions.
+
+🔒 6. Prompt engineering structuré
+Création d’un prompt agent clair et encadré :
+
+- Rôle, stratégie de réponse, format d’action/observation.
+
+- Forçage des clarifications quand le contexte est insuffisant.
+
+- Adapté aux outils LangChain (supporte {tools}, {tool_names}, {agent_scratchpad}).
+
+💡 Améliorations futures
+Ce prototype peut être enrichi par plusieurs fonctionnalités pour se rapprocher d’un assistant numérique réellement opérationnel dans un contexte de service public :
+
+📆 1. Prise de rendez-vous avec un organisme public
+Permettre à l'utilisateur de réserver un créneau auprès de la CAF, MDPH, CPAM ou autre structure.
+
+Intégration possible via des API publiques ou formulaires dynamiques en ligne.
+
+📧 2. Envoi automatique d’e-mails
+Génération d’un e-mail personnalisé contenant les informations discutées avec l’assistant.
+
+Envoi à l’organisme compétent (ex. : mairie, CAF), en s’appuyant sur les contacts extraits depuis les documents du RAG.
+
+🧾 3. Génération automatique de justificatifs ou courriers types
+Création de documents administratifs préremplis (attestations, lettres de motivation pour une aide, etc.).
+
+Export au format PDF ou DOCX.
+
 ## 👥 Contributions des membres de l'équipe
 - **[Charle](https://github.com/CpHeat)**:
   - Récupération des données & structuration des dossiers.
