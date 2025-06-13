@@ -1,12 +1,12 @@
-![bot ada](./image/ada.jpg)
+![bot ada](images/ada.jpg)
 
-# 🤖 agent IA citoyen (ADA-ChatBot) avec langchain 
+# 🤖 Agent IA citoyen (ADA-ChatBot) avec langchain 
 
 Ce projet vise à concevoir un assistant conversationnel intelligent capable de répondre en langage naturel à des questions portant sur les droits sociaux et administratifs, à partir de documents institutionnels publics.
 
  Il utilise les outils LangChain, une architecture RAG pour la recherche contextuelle, un agent IA pour la gestion des outils personnalisés, une mémoire conversationnelle pour maintenir le fil du dialogue, et une interface Streamlit claire et fluide.
 
-Ce projet a été réalisé par [Charle](https://github.com/CpHeat), [Louis](https://github.com/lougail) et [Sayana](https://github.com/sayana-project) lors de la formation Dev IA chez Simplon HDF-Lille.
+Ce projet a été réalisé par [Charles](https://github.com/CpHeat), [Louis](https://github.com/lougail) et [Sayana](https://github.com/sayana-project) lors de la formation Dev IA chez Simplon HDF-Lille.
 
 - Pour en savoir plus sur les agent IA, consultez [cette page Wikipedia](https://fr.wikipedia.org/wiki/Agent_intelligent).
 
@@ -27,7 +27,7 @@ Ce prototype simule un assistant numérique dans un contexte réel de service pu
 Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - Lille.
 ## 🏗️ Architecture & Composants IA
 
-![classe diagramme](./image/Class_Diagram.png)
+![classe diagramme](images/Class_Diagram.png)
 
 1. RAG (Retrieval-Augmented Generation)
 - Recherche dans des documents vectorisés (ChromaDB).
@@ -37,7 +37,7 @@ Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - L
 2. Agent IA (LangChain Agent)
 - Analyse la requête.
 
-- Utilise les outils personnalisés (résumé, simplification, éligibilité).
+- Utilise les outils personnalisés (éligibilité, simulation, démarches).
 
 - Coordination avec la mémoire et la base documentaire.
 
@@ -55,36 +55,37 @@ Ce projet est réalisé dans le cadre de la formation Dev IA – Simplon HDF - L
 ## Arborescence du projet
 
 Voici l'aborescence du projet pour mieux localiser certains fichiers : 
-- **test/** : Dossier contenant les test. 
 - **classes/** : Dossier contenant les documents d'information sur les aides et droits français.
   - **`agent_manager.py** : Classe qui permet d'exécuter l'agent.
   - **interface_manager.py** : Classe qui permet la mise en place interface chatbot agent tool.
   - **rag_tool.py** : Classe d'outils pour accéder au database vecteur RAG.
   - **settings.py** : Classe qui permet d'acéder au variable de paramètre.
   - **tool_manager.py** : Classe qui permet de gérer les outils du RAG.
-  - **vectoristore_mananger.py** : Classe qui permet de la mise en place du DB vectoriser
+  - **vectorstore_manager.py** : Classe qui permet de la mise en place du DB vectoriser
 - **data/** : Dossier contenant les documents d'information sur les aides et droits français.
-  - **`aide au logement/** : Dossier contenant les documents d'aide au logement.
-  - **aides au handicap/** : Dossier contenant les documents d'aide pour handicapé.
-  - **aides à la parentalité/** : Dossier contenant les documents d'aide au enfant.
-  - **aides santé/** : Dossier contenant les documents d'aide au enfant.
+  - **aides au logement/** : Dossier contenant les documents d'aides au logement.
+  - **aides au handicap/** : Dossier contenant les documents d'aides aux handicapés.
+  - **aides à la parentalité/** : Dossier contenant les documents d'aides aux enfants.
+  - **aides santé/** : Dossier contenant les documents d'aides à la santé.
 - **db/** : Dossier contenant la vectorisation des documents en db.
-  - **chroma.sqlite3** : Fichier query de la DB.
-  - **de55fs45119gd5**: Vecorisation des documents.
 - **main.py** : Point d'entrée de l'application.
-- **requirement.txt**: fichier text avec les bilbliothéque requise
+- **requirements.txt**: fichier txt avec les dépendances Python
 - **README.md** : Documentation du projet.
 
 ## Pré-requis et utilisation
 
-**Intallation d'ollama**
+**Installation d'Ollama**
 aller sur https://ollama.com/ .
 Télécharger exe et installer.
-dans une console fait la commande suivante
+dans une console faire la commande suivante pour vérifier que l'installation s'est bien effectuée
 ```
-ollama run llama3
+ollama --version
 ```
-**Récupére le projet chatbot**
+Puis installer le modèle mxbai-embed-large (utilisé pour la vectorisation)
+```
+ollama pull mxbai-embed-large
+```
+**Récupérer le projet chatbot**
 ```bash
 git clone https://github.com/CpHeat/ai-agent-with-langchain.git
 ```
@@ -96,6 +97,9 @@ pip install -r requirements.txt
 ```python
 streamlit run main.py
 ```
+
+![interface](./images/interface.png)
+
 ## 📄 Thème choisi
 
 **Accès aux droits** : notre assistant se concentre sur la compréhension des droits sociaux et administratifs dans les domaines suivants :
@@ -126,13 +130,9 @@ Utilisation d’un agent LangChain pour gérer la logique de dialogue et le choi
 
 Intégration d’outils sur mesure :
 
-- Résumé de texte
-
-- Simplification de langage administratif
-
-- Calculs d’éligibilité (revenu, logement, etc.)
-
-- Calculs montant d'aide
+- Calcul d’éligibilité (revenu, logement, etc.)
+- Recherche de démarches
+- Calcul montant d'aide
 
 🧠 4. Mémoire conversationnelle
 Utilisation de ConversationBufferMemory pour conserver l'historique de la discussion.
@@ -142,14 +142,14 @@ Permet des échanges plus naturels et du suivi de contexte sur plusieurs questio
 🖥️ 5. Interface avec Streamlit
 Interface simple et épurée pour permettre une expérience fluide au citoyen.
 
-Ajout d’une proposition contextuelle de filtre par domaine (logement, santé, etc.) dès les premières interactions.
+Proposition contextuelle de filtre par domaine (logement, handicap, etc.) dès les premières interactions.
 
 🔒 6. Prompt engineering structuré
 Création d’un prompt agent clair et encadré :
 
 - Rôle, stratégie de réponse, format d’action/observation.
 
-- Forçage des clarifications quand le contexte est insuffisant.
+- Demande de clarification quand le contexte est insuffisant.
 
 - Adapté aux outils LangChain (supporte {tools}, {tool_names}, {agent_scratchpad}).
 
@@ -172,24 +172,25 @@ Création de documents administratifs préremplis (attestations, lettres de moti
 Export au format PDF ou DOCX.
 
 ## 👥 Contributions des membres de l'équipe
-- **[Charle](https://github.com/CpHeat)**:
+- **[Charles](https://github.com/CpHeat)**:
   - Récupération des données & structuration des dossiers.
   - Vectorisation et mise en place du système RAG
+  - Manipulation et creation d'outils RAG.
   - Coordination entre RAG et agent.
   - Refactorisation et clarté du code.
   - Intégration des outils agent personnalisés.
+  - Debugging
     
 - **[Louis](https://github.com/lougail)**: 
     - Développement de l’interface Streamlit (UI/UX).
     - Intégration de l’agent IA dans l’interface.
     - Tests de communication avec le backend IA.
-    - Manipulation et creation d'outils RAG.
 
 - **[Sayana](https://github.com/sayana-project)**: 
     - Implémentation de l’agent conversationnel.
     - Prompting, mémoire conversationnelle.
     - Création et intégration des outils agent personnalisés.
-    - Manipulation et creation d'outils RAG.
+    - 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
