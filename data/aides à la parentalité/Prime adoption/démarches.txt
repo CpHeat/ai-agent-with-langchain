@@ -1,0 +1,51 @@
+Il faut distinguer selon que vous dépendez du régime général (Caf) ou agricole (MSA) :
+
+* Cas Général (CAF) :
+
+	La démarche diffère selon que l'enfant adopté est français, européen (espace Schengen) ou étranger :
+
+- Enfant Francais :
+
+	- Vous êtes allocataire :
+		
+		- Vous devez envoyer à la Caf l'un des 2 documents suivants :
+			- Attestation des services de l'aide sociale à l'enfance (ou autre organisme autorisé) précisant la date de placement de l'enfant dans votre foyer et le nom de la famille accueillante
+			- Copie de l'extrait du procès-verbal de la délibération du conseil de famille des pupilles de l'État.
+		
+		- Vous devez déclarer ce changement de situation : https://www.service-public.fr/particuliers/vosdroits/R1361
+
+	- Vous n'êtes pas allocataire :
+
+		- Vous devez envoyer à la Caf un dossier composé des documents suivants :
+			- Attestation des services de l'aide sociale à l'enfance (ou autre organisme autorisé) précisant la date de placement de l'enfant dans votre foyer et le nom de la famille accueillante (ou copie de l'extrait du procès-verbal de la délibération du conseil de famille des pupilles de l'État)
+			- Formulaires cerfa n°11423 (déclaration de situation) et n°10397 (déclaration de ressources) complétés.
+
+		- Vous devez remplir le formulaire suivant :https://www.service-public.fr/particuliers/vosdroits/R50664
+
+- Enfant Européen :
+
+	- Vous êtes allocataire :
+
+		- Vous devez envoyer à la Caf un dossier composé des documents suivants :
+			- Copie de votre agrément délivré par les services de votre département
+			- Copie de la décision étrangère (adoption ou placement en vue d'adoption)
+			- Photocopie d'une pièce d'identité de l'enfant (carte d'identité ou passeport du pays d'origine)
+			- Accord à la poursuite de la procédure (APP) établi par les autorités françaises (Mission de l'adoption internationale ou opérateurs ayant servi d'intermédiaires à l'adoption), délivré avant l'arrivée de l'enfant en France
+			- Justificatif de l'arrivée effective de l'enfant dans votre foyer (attestation des services du département du lieu de résidence des parents adoptifs, carte d'embarquement au nom de l'enfant, présentation de l'enfant, etc.).
+
+		- Vous devez déclarer ce changement de situation : https://www.service-public.fr/particuliers/vosdroits/R1361
+
+- Enfant Etranger :
+
+	- Vous êtes allocataire :
+
+		- Vous devez envoyer à la Caf un dossier composé des documents suivants :
+			- Copie de votre agrément délivré par les services de votre département
+			- Copie de la décision étrangère (adoption ou placement en vue d'adoption)
+			- Photocopie du passeport de l'enfant ou de tout autre document officiel du pays d'origine sur lequel figure le visa accordé par la Mission de l'adoption internationale (MAI) qui permet d'attester de la régularité du séjour de l'enfant en France et qui constitue le point de départ de l'arrivée de l'enfant dans votre foyer.
+
+		- Vous devez déclarer ce changement de situation : https://www.service-public.fr/particuliers/vosdroits/R1361
+
+* Régime Agricole (MSA) :
+
+	Contactez votre MSA qui vous orientera dans les démarches à accomplir.

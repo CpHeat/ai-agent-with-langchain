@@ -1,0 +1,13 @@
+Calcul du montant de l’APL :
+    calcul de base
+    personne seule :
+    si revenu moyen est entre 500€ - 900€ = 50% du loyer
+    si revenu moyen est entre 900€ - 1500€ = 33% du loyer
+    si revenu moyen est entre 1500€ - 1650 = 20% du loyer
+    en couple :
+    si revenu moyen est entre 500€ - 1000€ = 50% du loyer
+    si revenu moyen est entre 1000€ - 1550€ = 33% du loyer
+    si revenu moyen est entre 1550€ - 1816 = 20% du loyer
+
+    Le revenu utilisé pour le calcul est diminué de 300€ par enfant à charge
+    Si vous habitez à Paris le revenu moyen éligible est majoré de 15%

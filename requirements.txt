@@ -1,0 +1,14 @@
+IPython
+langchain
+langchain-community
+langchain-openai
+langchain-deepseek
+langchain-ollama
+langchain-chroma
+langchain-community
+langchain-openai
+langchain-deepseek
+langchain-ollama
+chromadb
+streamlit
+streamlit-extras

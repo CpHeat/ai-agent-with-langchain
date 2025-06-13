@@ -1,0 +1,9 @@
+Calcul d’éligibilité :
+    Vous pouvez déposer un recours DALO si :
+    si vous gagner moin de 20 000€ par an vous etes eligible
+
+Calcul du montant de l’aide :
+    si vous gagner entre 18 000€ et 20 000€ vous obtiendrai une aide de 120€
+    si vous gagner entre 15 000€ et 18 000€ vous obtiendrai une aide de 160€
+    si vous gagner moin de 15 000€ vous obtiendrai une aide de 200€
+    

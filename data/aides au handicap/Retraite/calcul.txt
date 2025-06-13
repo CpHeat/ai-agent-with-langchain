@@ -1,0 +1,10 @@
+Calcul d’éligibilité :
+    Vous êtes éligible à une retraite anticipée si :
+    - vous avez un taux d’incapacité permanente reconnu ≥ 50 %,
+    - vous avez une durée d’assurance minimale avec cotisations.
+
+Calcul du montant de l’aide :
+    - Si vous êtes handicapé a 50% vous devez faire :
+    montant retraite_handicap=1.1*montant_de_la_retraite
+    - Si vous êtes handicapé a 75% vous devez faire : mont_retraite_handicap=1.15*montant_de_la_retraite
+    - Si vous êtes handicapé a 100% vous devez faire : mont_retraite_handicap=1.2*montant_de_la_retraite
