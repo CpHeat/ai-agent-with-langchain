@@ -216,7 +216,7 @@ class InterfaceManager(ABC):
             rain(
                 emoji="😞",
                 font_size=54,
-                falling_speed=5,
+                falling_speed=3,
                 animation_length=1,
             )
 
@@ -231,7 +231,7 @@ class InterfaceManager(ABC):
         """ CSS for the chat. """
         st.markdown("""
                 <style>
-                button[kind="header"], button[kind="headerNoPadding"], div[aria-label="dialog"] {
+                button[kind="header"], button[kind="headerNoPadding"], div[aria-label="dialog"], ul[role="option"] {
                     color: Snow;
                 }
                 .main-header {
