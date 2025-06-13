@@ -1,7 +1,7 @@
+![bot ada](./image/ada.png)
 
 # 🤖 agent IA citoyen (ADA-ChatBot) avec langchain 
 
-![bot ada](./image/ada.png)
 Ce projet vise à concevoir un assistant conversationnel intelligent capable de répondre en langage naturel à des questions portant sur les droits sociaux et administratifs, à partir de documents institutionnels publics.
 
  Il utilise les outils LangChain, une architecture RAG pour la recherche contextuelle, un agent IA pour la gestion des outils personnalisés, une mémoire conversationnelle pour maintenir le fil du dialogue, et une interface Streamlit claire et fluide.
