@@ -89,7 +89,9 @@ ollama pull mxbai-embed-large
 ```bash
 git clone https://github.com/CpHeat/ai-agent-with-langchain.git
 ```
-**Installer les dépendances**
+**Ouvrir le projet avec VSCode ou PyCharm**
+**Créer un environnement virtuel Python 3.13**
+**Installer les dépendances depuis le terminal dans le dossier du projet**
 ```bash
 pip install -r requirements.txt
 ```
